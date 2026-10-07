@@ -24,7 +24,7 @@ VALUES ('Cardinal', 'Tom B. Erichsen', 'Skagen 21', 'Stavanger', '4006', 'Norway
 */
     try {
         const [alunos] = await db.query
-        ("INSERT INTO student VALUES (? ,?, ?, ?,?,?)",[4, name, classe, matricula,email, gender])
+        ("INSERT INTO student (name, class, matricula,email, gender) VALUES (?,?,?,?,?)",[ name, classe, matricula,email, gender])
         res.send({ 'alunos': alunos })
 
     } catch (error) {
