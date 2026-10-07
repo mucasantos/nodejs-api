@@ -1,4 +1,7 @@
 const express = require('express');
+
+const studentRoutes = require('./routes/students-routes')
+
 const app = express()
 const port = 3001
 
@@ -6,23 +9,9 @@ const port = 3001
 app.use(express.json())
 //padrao urlenconded
 app.use(express.urlencoded({ extended: true }))
+
 //Rotas
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
-
-app.get('/users', (req, res) => {
-    res.send({ 'name': "Samuel" })
-})
-
-app.post('/products', (req, res) => {
-    res.send('Recebi um post')
-})
-
-app.post('/signup', (req, res) => {
-    console.log(req.body)
-    res.send('Recebi um post')
-})
+app.use('/students', studentRoutes)
 
 //middleware global
 
